@@ -1,5 +1,4 @@
 import React from "react";
-import Buttons from "./Buttons";
 
 class Education extends React.Component {
 
@@ -21,7 +20,6 @@ class Education extends React.Component {
                         <label htmlFor="date">Date of study :</label>
                         <input type={"date"} id="date"></input>
                     </div>
-                    <Buttons/>
                 </form>
             </div>
         )

@@ -1,5 +1,4 @@
 import React from "react";
-import Buttons from "./Buttons";
 
 class Practice extends React.Component {
 
@@ -29,7 +28,6 @@ class Practice extends React.Component {
                         <label htmlFor="endDate">End date :</label>
                         <input type={"date"} id="endDate"></input>
                     </div>
-                    <Buttons />
                 </form>
             </div>
         )
