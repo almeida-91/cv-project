@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 
-class General extends Component {
+class General extends React.Component {
 
 
     render(){
@@ -9,15 +9,15 @@ class General extends Component {
                 General
                 <form>
                     <div>
-                        <label htmlFor="name">Name:</label>
+                        <label htmlFor="name">Name :</label>
                         <input type={"text"} id="name"></input>
                     </div>
                     <div>
-                        <label htmlFor="email">E-mail:</label>
+                        <label htmlFor="email">E-mail :</label>
                         <input type={"email"} id="email"></input>
                     </div>
                     <div>
-                        <label htmlFor="phoneNo">Phone Number:</label>
+                        <label htmlFor="phoneNo">Phone Number :</label>
                         <input type={"tel"} id="phoneNo"></input>
                     </div>
                 </form>
