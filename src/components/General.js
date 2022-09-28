@@ -1,4 +1,5 @@
 import React from "react";
+import Buttons from "./Buttons";
 
 class General extends React.Component {
 
@@ -20,6 +21,7 @@ class General extends React.Component {
                         <label htmlFor="phoneNo">Phone Number :</label>
                         <input type={"tel"} id="phoneNo"></input>
                     </div>
+                    <Buttons />
                 </form>
             </div>
         )
