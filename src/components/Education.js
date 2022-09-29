@@ -33,21 +33,23 @@ class Education extends React.Component {
         if (this.state.editable === true){
             return(
                 <div>
-                    Education
+                    <div className="title">Education</div>
                     <form onSubmit={this.submitHandler}>
-                        <div>
+                        <div className="input">
                             <label htmlFor="school">School name :</label>
                             <input onChange={this.changeHandler} type={"text"} id="school" value={this.state.school} name="school"></input>
                         </div>
-                        <div>
+                        <div className="input">
                             <label htmlFor="title">Title of study :</label>
                             <input onChange={this.changeHandler} type={"text"} id="title" value={this.state.title} name="title"></input>
                         </div>
-                        <div>
+                        <div className="input">
                             <label htmlFor="date">Date of study :</label>
                             <input onChange={this.changeHandler} type={"date"} id="date" value={this.state.date} name="date"></input>
                         </div>
-                        <button type="submit">Submit</button>
+                        <div>
+                            <button type="submit">Submit</button>
+                        </div>
                     </form>
                 </div>
             )

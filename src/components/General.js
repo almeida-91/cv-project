@@ -33,7 +33,7 @@ class General extends React.Component {
         if(this.state.editable === true){
             return(
                 <div>
-                    <div>General</div>
+                    <div className="title">General</div>
                     <form onSubmit={this.submitHandler}>
                         <div>
                             <label htmlFor="name">Name :</label>
@@ -47,7 +47,9 @@ class General extends React.Component {
                             <label htmlFor="phone">Phone Number :</label>
                             <input onChange={this.changeHandler} type={"tel"} id="phone" value={`${this.state.phone}`} name="phone"></input>
                         </div>
-                        <button type="Submit">Submit</button>
+                        <div>
+                            <button type="submit">Submit</button>
+                        </div>
                     </form>
                 </div>
             )

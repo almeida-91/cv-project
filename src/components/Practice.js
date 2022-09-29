@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "../styles/styles.css"
 
 class Practice extends React.Component {
     constructor(){
@@ -32,27 +33,27 @@ class Practice extends React.Component {
 
     render(){
         if (this.state.editable === true) {
-            return(
-                <div>
-                    Practice
+             return(
+                    <div>
+                    <div className="title">Practice</div>
                     <form onSubmit={this.submitHandler}>
-                        <div>
+                        <div className="input">
                             <label htmlFor="company">Company name :</label>
                             <input onChange={this.changeHandler} type={"text"} id="company" value={this.state.company} name="company"></input>
                         </div>
-                        <div>
+                        <div className="input">
                             <label htmlFor="position">Position title :</label>
                             <input onChange={this.changeHandler} type={"text"} id="position" value={this.state.position} name="position"></input>
                         </div>
-                        <div>
+                        <div className="input">
                             <label htmlFor="tasks">Main job tasks :</label>
                             <input onChange={this.changeHandler} type={"text"} id="tasks" value={this.state.tasks} name="tasks"></input>
                         </div>
-                        <div>
+                        <div className="input">
                             <label htmlFor="startDate">Start date :</label>
                             <input onChange={this.changeHandler} type={"date"} id="startDate" value={this.state.startDate} name="startDate"></input>
                         </div>
-                        <div>
+                        <div className="input">
                             <label htmlFor="endDate">End date :</label>
                             <input onChange={this.changeHandler} type={"date"} id="endDate" value={this.state.endDate} name="endDate"></input>
                         </div>
@@ -60,7 +61,7 @@ class Practice extends React.Component {
                             <button type="submit">Submit</button>
                         </div>
                     </form>
-                </div>
+                </div> 
             )
         } else {
             return(
