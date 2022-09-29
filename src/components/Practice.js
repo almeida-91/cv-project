@@ -1,36 +1,85 @@
 import React from "react";
 
 class Practice extends React.Component {
+    constructor(){
+        super();
+        this.state = {
+            company: "",
+            position: "",
+            tasks: "",
+            startDate: "",
+            endDate: "",
+            editable: true,
+        }
 
+        this.changeHandler = this.changeHandler.bind(this);
+        this.submitHandler = this.submitHandler.bind(this);
+        this.editClickHandler = this.editClickHandler.bind(this);
+    }
+
+    changeHandler(event){
+        this.setState({[event.target.name]: event.target.value});
+    }
+
+    submitHandler(e){
+        e.preventDefault();
+        this.setState({editable : false});
+    }
+
+    editClickHandler(){
+        this.setState({editable : true});
+    }
 
     render(){
-        return(
-            <div>
-                Practice
-                <form>
-                    <div>
-                        <label htmlFor="company">Company name :</label>
-                        <input type={"text"} id="company"></input>
-                    </div>
-                    <div>
-                        <label htmlFor="position">Position title :</label>
-                        <input type={"text"} id="position"></input>
-                    </div>
-                    <div>
-                        <label htmlFor="tasks">Main job tasks :</label>
-                        <input type={"text"} id="tasks"></input>
-                    </div>
-                    <div>
-                        <label htmlFor="startDate">Start date :</label>
-                        <input type={"date"} id="startDate"></input>
-                    </div>
-                    <div>
-                        <label htmlFor="endDate">End date :</label>
-                        <input type={"date"} id="endDate"></input>
-                    </div>
-                </form>
-            </div>
-        )
+        if (this.state.editable === true) {
+            return(
+                <div>
+                    Practice
+                    <form onSubmit={this.submitHandler}>
+                        <div>
+                            <label htmlFor="company">Company name :</label>
+                            <input onChange={this.changeHandler} type={"text"} id="company" value={this.state.company} name="company"></input>
+                        </div>
+                        <div>
+                            <label htmlFor="position">Position title :</label>
+                            <input onChange={this.changeHandler} type={"text"} id="position" value={this.state.position} name="position"></input>
+                        </div>
+                        <div>
+                            <label htmlFor="tasks">Main job tasks :</label>
+                            <input onChange={this.changeHandler} type={"text"} id="tasks" value={this.state.tasks} name="tasks"></input>
+                        </div>
+                        <div>
+                            <label htmlFor="startDate">Start date :</label>
+                            <input onChange={this.changeHandler} type={"date"} id="startDate" value={this.state.startDate} name="startDate"></input>
+                        </div>
+                        <div>
+                            <label htmlFor="endDate">End date :</label>
+                            <input onChange={this.changeHandler} type={"date"} id="endDate" value={this.state.endDate} name="endDate"></input>
+                        </div>
+                        <div>
+                            <button type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            )
+        } else {
+            return(
+                <div>
+                    Practice
+                    <div>Company name :</div>
+                    <span>{this.state.company}</span>
+                    <div>Position :</div>
+                    <span>{this.state.position}</span>
+                    <div>Main job tasks :</div>
+                    <span>{this.state.tasks}</span>
+                    <div>Start date :</div>
+                    <span>{this.state.startDate}</span>
+                    <div>End date :</div>
+                    <span>{this.state.endDate}</span>
+                    <button onClick={this.editClickHandler}>Edit</button>
+                </div>
+            )
+        }
     }
 }
 

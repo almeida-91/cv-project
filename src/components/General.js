@@ -13,7 +13,7 @@ class General extends React.Component {
 
         this.changeHandler = this.changeHandler.bind(this);
         this.submitHandler = this.submitHandler.bind(this);
-        this.editHandler = this.editHandler.bind(this);
+        this.editClickHandler = this.editClickHandler.bind(this);
     }
 
     changeHandler(event){
@@ -25,7 +25,7 @@ class General extends React.Component {
         this.setState({editable : false});
     }
 
-    editHandler(){
+    editClickHandler(){
         this.setState({editable : true});
     }
 
@@ -58,7 +58,7 @@ class General extends React.Component {
                     <div>Name : {this.state.name}</div>
                     <div>E-mail : {this.state.email}</div>
                     <div>Phone : {this.state.phone}</div>
-                    <button onClick={this.editHandler}>Edit</button>
+                    <button onClick={this.editClickHandler}>Edit</button>
                 </div>
             )
         }
