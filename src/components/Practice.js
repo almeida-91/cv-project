@@ -66,16 +66,21 @@ class Practice extends React.Component {
             return(
                 <div>
                     Practice
-                    <div>Company name :</div>
+                    <div>Company name :
                     <span>{this.state.company}</span>
-                    <div>Position :</div>
+                    </div>
+                    <div>Position :
                     <span>{this.state.position}</span>
-                    <div>Main job tasks :</div>
+                    </div>
+                    <div>Main job tasks :
                     <span>{this.state.tasks}</span>
-                    <div>Start date :</div>
+                    </div>
+                    <div>Start date :
                     <span>{this.state.startDate}</span>
-                    <div>End date :</div>
+                    </div>
+                    <div>End date :
                     <span>{this.state.endDate}</span>
+                    </div>
                     <button onClick={this.editClickHandler}>Edit</button>
                 </div>
             )
