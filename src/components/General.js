@@ -32,7 +32,7 @@ class General extends React.Component {
     render(){
         if(this.state.editable === true){
             return(
-                <div>
+                <div className="formContainer">
                     <div className="title">General</div>
                     <form onSubmit={this.submitHandler}>
                         <div>
@@ -55,12 +55,20 @@ class General extends React.Component {
             )
         } else {
             return(
-                <div>
-                    <div>General</div>
-                    <div>Name : {this.state.name}</div>
-                    <div>E-mail : {this.state.email}</div>
-                    <div>Phone : {this.state.phone}</div>
-                    <button onClick={this.editClickHandler}>Edit</button>
+                <div className="formContainer">
+                    <div className="title">General</div>
+                    <div className="input">Name :
+                        <span>{this.state.name}</span>
+                    </div>
+                    <div className="input">E-mail :
+                        <span>{this.state.email}</span>
+                    </div>
+                    <div className="input">Phone Number:
+                        <span>{this.state.phone}</span>
+                    </div>
+                    <div className="input">
+                        <button onClick={this.editClickHandler}>Edit</button>
+                    </div>
                 </div>
             )
         }

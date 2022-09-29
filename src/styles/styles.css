@@ -6,6 +6,8 @@
 
 html,
 body {
+    font-family: sans-serif;
+    background-color: dimgrey;
     height: 100%;
     width: 100%;
     display: flex;
@@ -18,11 +20,64 @@ div{
     padding: 10px;
 }
 
-form div {
+form div{
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
 button {
+    width: 100%;
     grid-column: span 2;
+    background-color: dimgray;
+    color: white;
+    font-size: large;
+    padding: 10px 0 10px;
+    border: none;
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: gray;
+    border-bottom: 2px solid cornflowerblue;
+}
+
+.formContainer {
+    background-color: rgb(46, 46, 46);
+    color: white;
+    font-weight: 600;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+input {
+    background-color: dimgray;
+    color: white;
+    font-weight: 600;
+    padding: 2px 3px;
+    border: none;
+    border-radius: 5px;
+}
+
+input:focus {
+    outline: none;
+    border-bottom: 2px solid cornflowerblue;
+}
+
+.title {
+    font-size: large;
+    text-align: center;
+}
+
+h1{
+    color: white;
+    text-align: center;
+    background-color: rgb(46, 46, 46);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "../styles/styles.css"
 
 class Practice extends React.Component {
     constructor(){
@@ -34,7 +33,7 @@ class Practice extends React.Component {
     render(){
         if (this.state.editable === true) {
              return(
-                    <div>
+                    <div className="formContainer">
                     <div className="title">Practice</div>
                     <form onSubmit={this.submitHandler}>
                         <div className="input">
@@ -65,21 +64,21 @@ class Practice extends React.Component {
             )
         } else {
             return(
-                <div>
-                    Practice
-                    <div>Company name :
+                <div className="formContainer">
+                    <div className="title">Practice</div>
+                    <div className="input">Company name :
                     <span>{this.state.company}</span>
                     </div>
-                    <div>Position :
+                    <div className="input">Position :
                     <span>{this.state.position}</span>
                     </div>
-                    <div>Main job tasks :
+                    <div className="input">Main job tasks :
                     <span>{this.state.tasks}</span>
                     </div>
-                    <div>Start date :
+                    <div className="input">Start date :
                     <span>{this.state.startDate}</span>
                     </div>
-                    <div>End date :
+                    <div className="input">End date :
                     <span>{this.state.endDate}</span>
                     </div>
                     <button onClick={this.editClickHandler}>Edit</button>
