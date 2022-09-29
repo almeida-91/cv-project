@@ -8,11 +8,13 @@ class Education extends React.Component {
             title : "",
             date : "",
             editable : true,
+            add : false,
         }
 
         this.changeHandler = this.changeHandler.bind(this);
         this.submitHandler = this.submitHandler.bind(this);
         this.editClickHandler = this.editClickHandler.bind(this);
+        this.addEducation = this.addEducation.bind(this);
     }
 
     changeHandler(event){
@@ -28,6 +30,9 @@ class Education extends React.Component {
         this.setState({editable : true});
     }
 
+    addEducation(){
+        this.setState({add : true});
+    }
 
     render(){
         if (this.state.editable === true){
@@ -68,7 +73,9 @@ class Education extends React.Component {
                     </div>
                     <div>
                         <button onClick={this.editClickHandler}>Edit</button>
+                        <button onClick={this.addEducation}>Add</button>
                     </div>
+                    {this.state.add === true ? <Education /> : null}
                 </div>
             )
         }

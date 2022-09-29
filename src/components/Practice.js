@@ -10,11 +10,13 @@ class Practice extends React.Component {
             startDate: "",
             endDate: "",
             editable: true,
+            add: false,
         }
 
         this.changeHandler = this.changeHandler.bind(this);
         this.submitHandler = this.submitHandler.bind(this);
         this.editClickHandler = this.editClickHandler.bind(this);
+        this.addPractice = this.addPractice.bind(this);
     }
 
     changeHandler(event){
@@ -28,6 +30,10 @@ class Practice extends React.Component {
 
     editClickHandler(){
         this.setState({editable : true});
+    }
+
+    addPractice(){
+        this.setState({add : true});
     }
 
     render(){
@@ -82,6 +88,8 @@ class Practice extends React.Component {
                     <span>{this.state.endDate}</span>
                     </div>
                     <button onClick={this.editClickHandler}>Edit</button>
+                    <button onClick={this.addPractice}>Add</button>
+                    {this.state.add === true ? <Practice /> : null }
                 </div>
             )
         }
