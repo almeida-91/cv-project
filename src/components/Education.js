@@ -56,6 +56,7 @@ class Education extends React.Component {
                             <button type="submit">Submit</button>
                         </div>
                     </form>
+                    {this.state.add === true ? <Education /> : null}
                 </div>
             )
         } else {
@@ -73,9 +74,8 @@ class Education extends React.Component {
                     </div>
                     <div>
                         <button onClick={this.editClickHandler}>Edit</button>
-                        <button onClick={this.addEducation}>Add</button>
                     </div>
-                    {this.state.add === true ? <Education /> : null}
+                    {this.state.add === true ? <Education /> : <button onClick={this.addEducation}>Add</button>}
                 </div>
             )
         }
