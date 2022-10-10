@@ -1,85 +1,82 @@
-import React from "react";
+import React, { useState } from "react";
 
-class Education extends React.Component {
-    constructor(){
-        super();
-        this.state = {
-            school : "",
-            title : "",
-            date : "",
-            editable : true,
-            add : false,
-        }
+const Education = () =>{
+    const [school, setSchool] = useState("");
+    const [title, setTitle] = useState("");
+    const [date, setDate] = useState("");
+    const [editable, setEditable] = useState("");
+    const [addEducation, setAddEducation] = useState("");
 
-        this.changeHandler = this.changeHandler.bind(this);
-        this.submitHandler = this.submitHandler.bind(this);
-        this.editClickHandler = this.editClickHandler.bind(this);
-        this.addEducation = this.addEducation.bind(this);
+    const updateSchool = (e) => {
+        setSchool(e.target.value);
     }
 
-    changeHandler(event){
-        this.setState({[event.target.name]: event.target.value});
+    const updateTitle = (e) => {
+        setTitle(e.target.value);
     }
 
-    submitHandler(e){
+    const updateDate = (e) => {
+        setDate(e.target.value);
+    }
+
+    const submitHandler = (e) => {
         e.preventDefault();
-        this.setState({editable : false});
+        setEditable(false);
     }
 
-    editClickHandler(){
-        this.setState({editable : true});
+    const editClickHandler = () => {
+        setEditable(true);
     }
 
-    addEducation(){
-        this.setState({add : true});
+    const updateaddEducation = () => {
+        setAddEducation(true);
     }
 
-    render(){
-        if (this.state.editable === true){
-            return(
-                <div className="formContainer">
-                    <div className="title">Education</div>
-                    <form onSubmit={this.submitHandler}>
-                        <div className="input">
-                            <label htmlFor="school">School name :</label>
-                            <input onChange={this.changeHandler} type={"text"} id="school" value={this.state.school} name="school"></input>
-                        </div>
-                        <div className="input">
-                            <label htmlFor="title">Title of study :</label>
-                            <input onChange={this.changeHandler} type={"text"} id="title" value={this.state.title} name="title"></input>
-                        </div>
-                        <div className="input">
-                            <label htmlFor="date">Date of study :</label>
-                            <input onChange={this.changeHandler} type={"date"} id="date" value={this.state.date} name="date"></input>
-                        </div>
-                        <div>
-                            <button type="submit">Submit</button>
-                        </div>
-                    </form>
-                    {this.state.add === true ? <Education /> : null}
-                </div>
-            )
-        } else {
-            return(
-                <div className="formContainer">
-                    <div className="title">Education</div>
-                    <div className="input">School name :
-                    <span>{this.state.school}</span>
+    if (editable === true){
+        return(
+            <div className="formContainer">
+                <div className="title">Education</div>
+                <form onSubmit={submitHandler}>
+                    <div className="input">
+                        <label htmlFor="school">School name :</label>
+                        <input onChange={updateSchool} type={"text"} id="school" value={school} name="school"></input>
                     </div>
-                    <div className="input">Title of study :
-                    <span>{this.state.title}</span>
+                    <div className="input">
+                        <label htmlFor="title">Title of study :</label>
+                        <input onChange={updateTitle} type={"text"} id="title" value={title} name="title"></input>
                     </div>
-                    <div className="input">Date of study :
-                    <span>{this.state.date}</span>
+                    <div className="input">
+                        <label htmlFor="date">Date of study :</label>
+                        <input onChange={updateDate} type={"date"} id="date" value={date} name="date"></input>
                     </div>
                     <div>
-                        <button onClick={this.editClickHandler}>Edit</button>
+                        <button type="submit">Submit</button>
                     </div>
-                    {this.state.add === true ? <Education /> : <button onClick={this.addEducation}>Add</button>}
+                </form>
+                {addEducation === true ? <Education /> : null}
+            </div>
+        )
+    } else {
+        return(
+            <div className="formContainer">
+                <div className="title">Education</div>
+                <div className="input">School name :
+                <span>{school}</span>
                 </div>
-            )
-        }
+                <div className="input">Title of study :
+                <span>{title}</span>
+                </div>
+                <div className="input">Date of study :
+                <span>{date}</span>
+                </div>
+                <div>
+                    <button onClick={editClickHandler}>Edit</button>
+                </div>
+                {this.state.add === true ? <Education /> : <button onClick={updateaddEducation}>Add</button>}
+            </div>
+        )
     }
 }
+
 
 export default Education;
