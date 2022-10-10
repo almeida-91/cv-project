@@ -1,100 +1,105 @@
-import React from "react";
+import React, { useState } from "react";
 
-class Practice extends React.Component {
-    constructor(){
-        super();
-        this.state = {
-            company: "",
-            position: "",
-            tasks: "",
-            startDate: "",
-            endDate: "",
-            editable: true,
-            add: false,
-        }
+const Practice = () => {
 
-        this.changeHandler = this.changeHandler.bind(this);
-        this.submitHandler = this.submitHandler.bind(this);
-        this.editClickHandler = this.editClickHandler.bind(this);
-        this.addPractice = this.addPractice.bind(this);
+    const [company, setCompany] = useState("");
+    const [position, setPosition] = useState("");
+    const [tasks, setTasks] = useState("");
+    const [startDate, setStartDate] = useState("");
+    const [endDate, setEndDate] = useState("");
+    const [editable, setEditable] = useState(true);
+    const [addPractice, setAddPractice] = useState(false);
+
+    const updateCompany = (e) => {
+        setCompany(e.target.value);
     }
 
-    changeHandler(event){
-        this.setState({[event.target.name]: event.target.value});
+    const updatePosition = (e) => {
+        setPosition(e.target.value);
     }
 
-    submitHandler(e){
+    const updateTasks = (e) => {
+        setTasks(e.target.value);
+    }
+
+    const updateStartDate = (e) => {
+        setStartDate(e.target.value);
+    }
+
+    const updateEndDate = (e) => {
+        setEndDate(e.target.value);
+    }
+
+    const submitHandler = (e) => {
         e.preventDefault();
-        this.setState({editable : false});
+        setEditable(false);
     }
 
-    editClickHandler(){
-        this.setState({editable : true});
+    const editClickHandler = () => {
+        setEditable(true);
     }
 
-    addPractice(){
-        this.setState({add : true});
+    const updateAddPractice = () => {
+        setAddPractice(true);
     }
 
-    render(){
-        if (this.state.editable === true) {
-             return(
-                    <div className="formContainer">
-                    <div className="title">Practice</div>
-                    <form onSubmit={this.submitHandler}>
-                        <div className="input">
-                            <label htmlFor="company">Company name :</label>
-                            <input onChange={this.changeHandler} type={"text"} id="company" value={this.state.company} name="company"></input>
-                        </div>
-                        <div className="input">
-                            <label htmlFor="position">Position title :</label>
-                            <input onChange={this.changeHandler} type={"text"} id="position" value={this.state.position} name="position"></input>
-                        </div>
-                        <div className="input">
-                            <label htmlFor="tasks">Main job tasks :</label>
-                            <input onChange={this.changeHandler} type={"text"} id="tasks" value={this.state.tasks} name="tasks"></input>
-                        </div>
-                        <div className="input">
-                            <label htmlFor="startDate">Start date :</label>
-                            <input onChange={this.changeHandler} type={"date"} id="startDate" value={this.state.startDate} name="startDate"></input>
-                        </div>
-                        <div className="input">
-                            <label htmlFor="endDate">End date :</label>
-                            <input onChange={this.changeHandler} type={"date"} id="endDate" value={this.state.endDate} name="endDate"></input>
-                        </div>
-                        <div>
-                            <button type="submit">Submit</button>
-                        </div>
-                    </form>
-                    {this.state.add === true ? <Practice /> : null }
-                </div> 
-            )
-        } else {
-            return(
+    if (editable === true) {
+         return(
                 <div className="formContainer">
-                <div>
-                    <div className="title">Practice</div>
-                    <div className="input">Company name :
-                    <span>{this.state.company}</span>
+                <div className="title">Practice</div>
+                <form onSubmit={submitHandler}>
+                    <div className="input">
+                        <label htmlFor="company">Company name :</label>
+                        <input onChange={updateCompany} type={"text"} id="company" value={company} name="company"></input>
                     </div>
-                    <div className="input">Position :
-                    <span>{this.state.position}</span>
+                    <div className="input">
+                        <label htmlFor="position">Position title :</label>
+                        <input onChange={updatePosition} type={"text"} id="position" value={position} name="position"></input>
                     </div>
-                    <div className="input">Main job tasks :
-                    <span>{this.state.tasks}</span>
+                    <div className="input">
+                        <label htmlFor="tasks">Main job tasks :</label>
+                        <input onChange={updateTasks} type={"text"} id="tasks" value={tasks} name="tasks"></input>
                     </div>
-                    <div className="input">Start date :
-                    <span>{this.state.startDate}</span>
+                    <div className="input">
+                        <label htmlFor="startDate">Start date :</label>
+                        <input onChange={updateStartDate} type={"date"} id="startDate" value={startDate} name="startDate"></input>
                     </div>
-                    <div className="input">End date :
-                    <span>{this.state.endDate}</span>
+                    <div className="input">
+                        <label htmlFor="endDate">End date :</label>
+                        <input onChange={updateEndDate} type={"date"} id="endDate" value={endDate} name="endDate"></input>
                     </div>
-                    <button onClick={this.editClickHandler}>Edit</button>
+                    <div>
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+                {addPractice === true ? <Practice /> : null }
+            </div> 
+        )
+    } else {
+        return(
+            <div className="formContainer">
+            <div>
+                <div className="title">Practice</div>
+                <div className="input">Company name :
+                <span>{company}</span>
                 </div>
-                    {this.state.add === true ? <Practice /> : <button onClick={this.addPractice}>Add</button> }
+                <div className="input">Position :
+                <span>{position}</span>
                 </div>
-            )
-        }
+                <div className="input">Main job tasks :
+                <span>{tasks}</span>
+                </div>
+                <div className="input">Start date :
+                <span>{startDate}</span>
+                </div>
+                <div className="input">End date :
+                <span>{endDate}</span>
+                </div>
+                <button onClick={editClickHandler}>Edit</button>
+            </div>
+                {addPractice === true ? <Practice /> : <button onClick={updateAddPractice}>Add</button> }
+            </div>
+        )
     }
 }
 
