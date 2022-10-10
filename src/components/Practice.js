@@ -72,6 +72,7 @@ class Practice extends React.Component {
         } else {
             return(
                 <div className="formContainer">
+                <div>
                     <div className="title">Practice</div>
                     <div className="input">Company name :
                     <span>{this.state.company}</span>
@@ -89,6 +90,7 @@ class Practice extends React.Component {
                     <span>{this.state.endDate}</span>
                     </div>
                     <button onClick={this.editClickHandler}>Edit</button>
+                </div>
                     {this.state.add === true ? <Practice /> : <button onClick={this.addPractice}>Add</button> }
                 </div>
             )

@@ -1,78 +1,74 @@
-import React from "react";
+import React, { useState } from "react";
 
-class General extends React.Component {
-    constructor(props){
-        super(props);
+const General = () => {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+    const [editable,setEditable] = useState(true);
 
-        this.state = {
-            name: "",
-            email: "",
-            phone: "",
-            editable : true,
-        }
-
-        this.changeHandler = this.changeHandler.bind(this);
-        this.submitHandler = this.submitHandler.bind(this);
-        this.editClickHandler = this.editClickHandler.bind(this);
+    const updateName = (e) => {
+        setName(e.target.value);
     }
 
-    changeHandler(event){
-        this.setState({[event.target.name]: event.target.value});
+    const updateEmail = (e) => {
+        setEmail(e.target.value);
     }
 
-    submitHandler(e){
+    const updatePhone = (e) => {
+        setPhone(e.target.value);
+    }
+
+    const submitHandler = (e) => {
         e.preventDefault();
-        this.setState({editable : false});
+        setEditable(false);
     }
 
-    editClickHandler(){
-        this.setState({editable : true});
+    const editClickHandler = () => {
+        setEditable(true);
     }
 
-    render(){
-        if(this.state.editable === true){
-            return(
-                <div className="formContainer">
-                    <div className="title">General</div>
-                    <form onSubmit={this.submitHandler}>
-                        <div>
-                            <label htmlFor="name">Name :</label>
-                            <input onChange={this.changeHandler} type={"text"} id="name" value={`${this.state.name}`} name="name"></input>
-                        </div>
-                        <div>
-                            <label htmlFor="email">E-mail :</label>
-                            <input onChange={this.changeHandler} type={"email"} id="email" value={`${this.state.email}`} name="email"></input>
-                        </div>
-                        <div>
-                            <label htmlFor="phone">Phone Number :</label>
-                            <input onChange={this.changeHandler} type={"tel"} id="phone" value={`${this.state.phone}`} name="phone"></input>
-                        </div>
-                        <div>
-                            <button type="submit">Submit</button>
-                        </div>
-                    </form>
-                </div>
+    if(editable === true){
+        return(
+            <div className="formContainer">
+                <div className="title">General</div>
+                <form onSubmit={submitHandler}>
+                    <div>
+                        <label htmlFor="name">Name :</label>
+                        <input onChange={updateName} type={"text"} id="name" value={`${name}`} name="name"></input>
+                    </div>
+                    <div>
+                        <label htmlFor="email">E-mail :</label>
+                        <input onChange={updateEmail} type={"email"} id="email" value={`${email}`} name="email"></input>
+                    </div>
+                    <div>
+                        <label htmlFor="phone">Phone Number :</label>
+                        <input onChange={updatePhone} type={"tel"} id="phone" value={`${phone}`} name="phone"></input>
+                    </div>
+                    <div>
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
             )
         } else {
             return(
                 <div className="formContainer">
                     <div className="title">General</div>
                     <div className="input">Name :
-                        <span>{this.state.name}</span>
+                        <span>{name}</span>
                     </div>
                     <div className="input">E-mail :
-                        <span>{this.state.email}</span>
+                        <span>{email}</span>
                     </div>
                     <div className="input">Phone Number:
-                        <span>{this.state.phone}</span>
+                        <span>{phone}</span>
                     </div>
                     <div className="input">
-                        <button onClick={this.editClickHandler}>Edit</button>
+                        <button onClick={editClickHandler}>Edit</button>
                     </div>
                 </div>
             )
         }
     }
-}
 
 export default General;
