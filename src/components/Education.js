@@ -72,7 +72,7 @@ const Education = () =>{
                 <div>
                     <button onClick={editClickHandler}>Edit</button>
                 </div>
-                {this.state.add === true ? <Education /> : <button onClick={updateaddEducation}>Add</button>}
+                {addEducation === true ? <Education /> : <button onClick={updateaddEducation}>Add</button>}
             </div>
         )
     }
